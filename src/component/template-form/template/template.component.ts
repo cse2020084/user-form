@@ -14,12 +14,13 @@ export class TemplateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userModel=new User({username:'Tim',mail:'lop@t.com'});
+    this.userModel=new User({username:'Tim',mail:'lop@t.com',password:'1234'});
   }
 
-  onSubmit(){
+  onSubmit(userform){
     const forms=document.querySelector('.needs-validation');
     forms.classList.add('was-validated')
+    console.log('userform',userform)
   }
 
 

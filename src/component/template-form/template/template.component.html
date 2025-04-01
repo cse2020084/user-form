@@ -1,6 +1,6 @@
 <div class="container">
     <h3>Template Driven Form</h3>
-    <form #userform="ngForm" class="form-group needs-validation " (ngSubmit)="onSubmit()">
+    <form #userform="ngForm" class="form-group needs-validation " (ngSubmit)="onSubmit(userform)">
         <pre>{{userform.value | json}}</pre>
         <pre>{{userModel | json}}</pre>
         <div class="mb-3 form-group">
