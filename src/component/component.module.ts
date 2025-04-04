@@ -5,6 +5,7 @@ import { ComponentRoutingModule } from './component-routing.module';
 import { TemplateComponent } from './template-form/template/template.component';
 import { ReactiveComponent } from './reactive-form/reactive/reactive.component';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ComponentRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports:[
     TemplateComponent,

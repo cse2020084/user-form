@@ -1,10 +1,24 @@
 <div class="container">
-    <h3>Template Driven Form</h3>
-    <form action="" class="form-group">
-        <div class="mb-3">
-            <label for="" class="form-label">
-                <input type="text" class="form-control">
-            </label>
+    <h3>Reactive Form</h3>
+    <pre>{{registrationForm.value | json}}</pre>
+    <form action="" class="form-group" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3 form-group">
+            <label for="" class="form-label">Username</label>
+            <input type="text" class="form-control" formControlName="username">
+        </div>
+
+        <div class="mb-3 form-group">
+            <label for="" class="form-label">Password</label>
+            <input type="password" class="form-control" formControlName="password">
+        </div>
+
+        <div class="mb-3 form-group">
+            <label for="" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" formControlName="confirmpw">
+        </div>
+        <div class="class-12">
+            <button class="btn btn-success" type="submit">Submit</button>
+            <button (click)="loadOnClick()" class=" ms-3 btn btn-secondary " type="button">Load</button>
         </div>
     </form>
 </div>
