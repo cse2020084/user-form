@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive',
@@ -14,9 +14,9 @@ export class ReactiveComponent implements OnInit {
   }
 
   registrationForm=new FormGroup({
-    username:new FormControl('Tim'),
-    password:new FormControl(''),
-    confirmpw:new FormControl('')
+    username:new FormControl('Tim',[Validators.required,Validators.minLength(3)]),
+    password:new FormControl('',[Validators.required]),
+    confirmpw:new FormControl('',[Validators.required])
   });
 
   registrationForm2=this.fb.group({
@@ -28,7 +28,11 @@ export class ReactiveComponent implements OnInit {
 
   onSubmit(){
     console.log('registration form',this.registrationForm);
+    if(this.registrationForm.valid){
+  }else{
+    this.registrationForm.markAllAsTouched();
   }
+}
 
   loadOnClick(){
     this.registrationForm.setValue({
@@ -37,6 +41,17 @@ export class ReactiveComponent implements OnInit {
       confirmpw:'1234'
     });
 
+  }
+
+  get username_getter(){
+    return this.registrationForm.get('username');
+  }
+
+  get password_getter(){
+    return this.registrationForm.get('password');
+  }
+  get confirmpw_getter(){
+    return this.registrationForm.get('confirmpw');
   }
 
 }
