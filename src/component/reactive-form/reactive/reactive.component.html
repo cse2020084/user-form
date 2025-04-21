@@ -10,7 +10,10 @@
                     Please provide a Username.
                 </small>
                 <small *ngIf="username_getter.errors?.minlength" class="invalid-feedback d-block">
-                    Username should be minimum 3 characters long.
+                    Username should be minimum {{username_getter.errors?.minlength?.requiredLength}} characters long.
+                </small>
+                <small *ngIf="username_getter.errors?.forbiddenName" class="invalid-feedback d-block">
+                   {{username_getter.errors?.forbiddenName?.value}} Username should not contain this word.
                 </small>
             </div>
 

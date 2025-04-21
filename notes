@@ -1,0 +1,3 @@
+Reactive Forms:
+A custom validator is nothing but a function. the function that can be written in the component file itself.
+but since it is being used in many places,it is generally prefer to write it in a diff. file and then export it.

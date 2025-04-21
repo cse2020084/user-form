@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { forbiddenValidator } from 'src/component/shared/forbiddenValue';
 
 @Component({
   selector: 'app-reactive',
@@ -12,9 +13,10 @@ export class ReactiveComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  public forbiddenWords = /\b(admin|root|user)\b/;
 
   registrationForm=new FormGroup({
-    username:new FormControl('Tim',[Validators.required,Validators.minLength(3)]),
+    username:new FormControl('Tim',[Validators.required,Validators.minLength(3),forbiddenValidator(this.forbiddenWords)],),
     password:new FormControl('',[Validators.required]),
     confirmpw:new FormControl('',[Validators.required])
   });

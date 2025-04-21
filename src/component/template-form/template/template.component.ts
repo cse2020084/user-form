@@ -7,7 +7,7 @@ import { User } from 'src/component/user';
   styleUrls: ['./template.component.scss']
 })
 export class TemplateComponent implements OnInit {
-  public  userModel:any=null
+  public  userModel:User|null=null;
 
   constructor() { 
 
@@ -21,6 +21,7 @@ export class TemplateComponent implements OnInit {
     const forms=document.querySelector('.needs-validation');
     forms.classList.add('was-validated')
     console.log('userform',userform)
+    console.log("userModel",this.userModel);
   }
 
 
