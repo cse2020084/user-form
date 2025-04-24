@@ -31,6 +31,31 @@
                 <div *ngIf="!password.hasError('minlength') && password.hasError('pattern')"  class="invalid-feedback d-block">Please provide atleast one special character.</div>
             </div>
         </div>
+        <div class="form-group mb-3">
+            <label>Gender</label>
+            <div class="form-check">
+                <input type="radio" name="gender" id="male" value="male" [(ngModel)]="userModel.gender" class="form-check-input" >
+                <label for="male" class="form-check-label">
+                    Male
+                </label>
+            </div>
+            <div class="form-check">
+                <input type="radio" name="gender" id="female" value="female" [(ngModel)]="userModel.gender" class="form-check-input">
+                <label for="female" class="form-check-label">
+                    Female
+                </label>
+            </div>
+        </div>
+        <div class="form-group mb-3">
+            <label for="country" class="form-label">Country</label>
+            <select name="country" id="country" class="form-select" required [(ngModel)]="userModel.country" #country="ngModel" [ngClass]="{'is-invalid':country.touched && country.invalid, 'is-valid':country.touched && country.valid}">
+                <option value="" selected disabled>Please Select One</option>
+                <option *ngFor="let country of countries" [value]="country">{{country}}</option>
+            </select>
+            <div [hidden]="country.untouched || country.valid">
+                <div *ngIf="country.touched && country.invalid" class="invalid-feedback d-block">Please Choose a Country</div>
+            </div>
+        </div>
         <div class="col-12">
             <button class="btn btn-success" type="submit" [disabled]="!userform.form.valid">Submit form</button>
         </div>

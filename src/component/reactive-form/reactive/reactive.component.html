@@ -44,6 +44,29 @@
                 </small>
             </div>
         </div>
+
+        <div class="mb-3 form-group">
+            <label for="country" class="form-label">Country</label>
+            <select name="country" id="country" class="form-select" formControlName="country" [ngClass]="{'is-invalid':country_getter.touched && country_getter.invalid}">
+                <option value="" disabled>Please Choose One Country</option>
+                <option *ngFor="let country of countries"  [value]="country">{{country}}</option>
+            </select>
+            <div [hidden]="country_getter.untouched || country_getter.valid">
+                <small *ngIf="country_getter.errors?.required" class="invalid-feedback d-block">Please Choose a Country</small>
+            </div>
+        </div>
+
+        <div class="mb-3 form-group ">
+            <div class="form-check">
+                <input type="checkbox" id="term" name="term" formControlName="term" [ngClass]="{'is-invalid':term_getter.touched && term_getter.invalid}" class="form-check-input border border-2">
+                <label for="term" class="form-check-label"> Please Confirm All The Given Information.</label>
+                <!-- <div [hidden]="term_getter.untouched || term_getter.valid">
+                    <small *ngIf="term_getter.errors?.required" class="invalid-feedback d-block">You must accept the terms and conditions.</small>
+                </div> -->
+            </div>
+        </div>
+
+
         <div class="class-12">
             <button class="btn btn-success" type="submit">Submit</button>
             <button (click)="loadOnClick()" class=" ms-3 btn btn-secondary " type="button">Load</button>

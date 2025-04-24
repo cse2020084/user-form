@@ -8,13 +8,14 @@ import { User } from 'src/component/user';
 })
 export class TemplateComponent implements OnInit {
   public  userModel:User|null=null;
+  public countries=['India','Japan','China','Nepal'];
 
   constructor() { 
 
   }
 
   ngOnInit(): void {
-    this.userModel=new User({username:'Tim',mail:'lop@t.com',password:'1234'});
+    this.userModel=new User({username:'Tim',mail:'lop@t.com',password:'1234',gender:'male',country:''});
   }
 
   onSubmit(userform){

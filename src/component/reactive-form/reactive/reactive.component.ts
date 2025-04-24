@@ -14,18 +14,25 @@ export class ReactiveComponent implements OnInit {
   ngOnInit(): void {
   }
   public forbiddenWords = /\b(admin|root|user)\b/;
+  public countries=['India','Japan','China','Nepal'];
 
   registrationForm=new FormGroup({
     username:new FormControl('Tim',[Validators.required,Validators.minLength(3),forbiddenValidator(this.forbiddenWords)],),
     password:new FormControl('',[Validators.required]),
-    confirmpw:new FormControl('',[Validators.required])
+    confirmpw:new FormControl('',[Validators.required]),
+    country:new FormControl('',[Validators.required]),
+    term:new FormControl(false,[Validators.requiredTrue]),
   });
 
   registrationForm2=this.fb.group({
     username:['Tim'],
     password:[''],
-    confirmpw:['']
+    confirmpw:[''],
+    country:[''],
+    term:[false],
   })
+
+  
 
 
   onSubmit(){
@@ -40,9 +47,10 @@ export class ReactiveComponent implements OnInit {
     this.registrationForm.setValue({
       username:'Ram',
       password:'1234',
-      confirmpw:'1234'
+      confirmpw:'1234',
+      country:this.countries[2],
+      term:true,
     });
-
   }
 
   get username_getter(){
@@ -54,6 +62,13 @@ export class ReactiveComponent implements OnInit {
   }
   get confirmpw_getter(){
     return this.registrationForm.get('confirmpw');
+  }
+  get country_getter(){
+    return this.registrationForm.get('country');
+  }
+
+  get term_getter(){
+    return this.registrationForm.get('term');
   }
 
 }
