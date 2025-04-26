@@ -1,0 +1,21 @@
+<div class="container" *ngIf="form">
+    <h2>Personal Details</h2>
+    <form [formGroup]="form">
+        <div *ngFor="let field of personalDetails" >
+            <div class="mb-3 form-group">
+                <label [for]="field.name" class="form-label" >{{field.label}}</label>
+                <input  *ngIf="field.type === 'text' || field.type === 'email' || field.type === 'password' || field.type === 'date'" 
+                 [type]="field.type" [id]="field.name" class="form-control" [formControlName]="field.name" [placeholder]="field.placeholder">
+
+                 <div *ngIf="field.type === 'radio'" >
+                    <div *ngFor="let option of field.options">
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" [id]="option" [value]="option" [formControlName]="field.name">
+                            <label [for]="option" class="form-check-label">{{option}}</label>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </form>
+</div>

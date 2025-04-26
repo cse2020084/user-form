@@ -1,0 +1,35 @@
+<div class="container">
+    <h2>Dynamic Forms</h2>
+    <pre>{{form.value | json}}</pre>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="mb-3 form-group">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" formControlName="name" placeholder="Name">
+        </div>
+
+        <div class="mb-3 form-group">
+            <label for="paymentType" class="form-label">Choose Payment Method</label>
+            <select name="paymentType" id="paymentType" class="form-select" formControlName="paymentType">
+                <option value=""  disabled>Choose here..</option>
+                <option *ngFor="let type of paymentMethods" [value]="type">{{type}}</option>
+            </select>
+        </div>
+
+        <div *ngIf="paymentType.value=='Cards'" class="mb-3 form-group" formGroupName="cardDetails">
+            <div class="mb-3 form-group">
+                <label for="" class="form-label">Enter Name On Card</label>
+                <input type="text" class="form-control" placeholder="Name On Card" formControlName="nameCard">
+            </div>
+            <div class="mb-3 form-group">
+                <label for="" class="form-label">Enter Card Number</label>
+                <input type="number" class="form-control" placeholder="123-456-789" formControlName="numberCard">
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <button class="btn btn-success" type="submit">Submit</button>
+        </div>
+        
+    </form>
+</div>
+

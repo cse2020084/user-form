@@ -1,0 +1,128 @@
+{
+    "formTitle": "User Registration Form",
+    "sections": [
+      {
+        "sectionTitle": "Personal Details",
+        "fields": [
+          {
+            "label": "First Name",
+            "type": "text",
+            "name": "firstName",
+            "placeholder": "Enter your first name",
+            "validators": {
+              "required": true,
+              "minLength": 2
+            }
+          },
+          {
+            "label": "Last Name",
+            "type": "text",
+            "name": "lastName",
+            "placeholder": "Enter your last name",
+            "validators": {
+              "required": true
+            }
+          },
+          {
+            "label": "Date of Birth",
+            "type": "date",
+            "name": "dob",
+            "validators": {
+              "required": true
+            }
+          },
+          {
+            "label": "Gender",
+            "type": "radio",
+            "name": "gender",
+            "options": ["Male", "Female", "Other"],
+            "validators": {
+              "required": true
+            }
+          }
+        ]
+      },
+      {
+        "sectionTitle": "Contact Information",
+        "fields": [
+          {
+            "label": "Email",
+            "type": "email",
+            "name": "email",
+            "placeholder": "Enter your email",
+            "validators": {
+              "required": true,
+              "email": true
+            }
+          },
+          {
+            "label": "Phone Number",
+            "type": "text",
+            "name": "phoneNumber",
+            "placeholder": "Enter your phone number",
+            "validators": {
+              "required": true,
+              "pattern": "^[0-9]{10}$"
+            }
+          },
+          {
+            "label": "Address",
+            "type": "textarea",
+            "name": "address",
+            "placeholder": "Enter your full address",
+            "validators": {
+              "required": false
+            }
+          }
+        ]
+      },
+      {
+        "sectionTitle": "Account Security",
+        "fields": [
+          {
+            "label": "Password",
+            "type": "password",
+            "name": "password",
+            "placeholder": "Enter password",
+            "validators": {
+              "required": true,
+              "minLength": 6
+            }
+          },
+          {
+            "label": "Confirm Password",
+            "type": "password",
+            "name": "confirmPassword",
+            "placeholder": "Re-enter password",
+            "validators": {
+              "required": true,
+              "matchField": "password"
+            }
+          }
+        ]
+      },
+      {
+        "sectionTitle": "Preferences",
+        "fields": [
+          {
+            "label": "Preferred Contact Method",
+            "type": "select",
+            "name": "contactMethod",
+            "options": ["Email", "Phone", "SMS"],
+            "validators": {
+              "required": true
+            }
+          },
+          {
+            "label": "Subscribe to Newsletter",
+            "type": "checkbox",
+            "name": "newsletter",
+            "validators": {
+              "required": false
+            }
+          }
+        ]
+      }
+    ]
+  }
+  

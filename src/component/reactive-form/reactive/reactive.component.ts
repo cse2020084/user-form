@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { forbiddenValidator } from 'src/component/shared/forbiddenValue';
 
 @Component({
@@ -22,6 +22,8 @@ export class ReactiveComponent implements OnInit {
     confirmpw:new FormControl('',[Validators.required]),
     country:new FormControl('',[Validators.required]),
     term:new FormControl(false,[Validators.requiredTrue]),
+    mail:new FormControl(''),
+    altMail:new FormArray([new FormControl([])]),
   });
 
   registrationForm2=this.fb.group({
@@ -30,6 +32,8 @@ export class ReactiveComponent implements OnInit {
     confirmpw:[''],
     country:[''],
     term:[false],
+    mail:[''],
+    altMail:this.fb.array([]),
   })
 
   
@@ -69,6 +73,19 @@ export class ReactiveComponent implements OnInit {
 
   get term_getter(){
     return this.registrationForm.get('term');
+  }
+
+  get mail_getter(){
+    return this.registrationForm.get('mail');
+  }
+
+  get altMail_getter(){
+    return this.registrationForm.get('altMail') as FormArray;
+  }
+
+  addAltName(){
+    console.log('altname array',this.altMail_getter,this.altMail_getter.length)
+    this.altMail_getter.push(new FormControl(''));
   }
 
 }

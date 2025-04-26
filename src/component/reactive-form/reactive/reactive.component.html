@@ -46,6 +46,23 @@
         </div>
 
         <div class="mb-3 form-group">
+            <label for="" class="form-label">Email</label>
+            <input type="text" class="form-control" formControlName="mail">
+            <button class="btn btn-primary my-2" (click)="addAltName()">Add Alt Emails</button>
+        <!-- here there are two ways to display repeating inputs -->
+        <!-- one with [formControl], here and not using formArrayName -->  
+            <!-- <div *ngFor="let control of altMail_getter.controls; let i = index;">
+                <input type="text" class="form-control my-1" [formControl]="control">
+            </div> -->
+        <!-- here since you passes the form array name, angular automatically deduces the control with i  -->
+          <div formArrayName="altMail">
+            <div  *ngFor="let control of altMail_getter.controls; let i = index;">
+                <input type="text" class="my-1 form-control" [formControlName]="i">
+            </div>
+          </div>
+        </div>
+        <!--  -->
+        <div class="mb-3 form-group">
             <label for="country" class="form-label">Country</label>
             <select name="country" id="country" class="form-select" formControlName="country" [ngClass]="{'is-invalid':country_getter.touched && country_getter.invalid}">
                 <option value="" disabled>Please Choose One Country</option>
